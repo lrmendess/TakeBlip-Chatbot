@@ -8,7 +8,7 @@ using TakeBlipChatbot.Controllers.Response;
 namespace TakeBlipChatbot.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GitHubRepositoryController : ControllerBase
     {
         private GitHubClient _githubClient;
@@ -21,7 +21,8 @@ namespace TakeBlipChatbot.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GitHubRepositoryBlipResponse>>> Get(
             [FromQuery] string username,
-            [FromQuery] Language language = Octokit.Language.CSharp)
+            [FromQuery] Language language = Octokit.Language.CSharp,
+            [FromQuery] int take = 5)
         {
             var searchRepositoriesRequest = new SearchRepositoriesRequest()
             {
@@ -44,7 +45,7 @@ namespace TakeBlipChatbot.Controllers
 
             var filteredRepositories = repositories
                 .OrderBy(a => a.CreatedAt)
-                .Take(5)
+                .Take(take)
                 .Select(r => new GitHubRepositoryBlipResponse
                 {
                     Url = r.Url,
