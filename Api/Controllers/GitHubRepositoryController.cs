@@ -9,20 +9,20 @@ namespace TakeBlipChatbot.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GitHubRepositoryController : ControllerBase
+    public class GitHubRepositoriesController : ControllerBase
     {
         private GitHubClient _githubClient;
 
-        public GitHubRepositoryController(GitHubClient githubClient)
+        public GitHubRepositoriesController(GitHubClient githubClient)
         {
             _githubClient = githubClient;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<GitHubRepositoryBlipResponse>>> Get(
-            [FromQuery] string username,
-            [FromQuery] Language language = Octokit.Language.CSharp,
-            [FromQuery] int take = 5)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<IEnumerable<GitHubRepositoryResponse>>> GetOlderRepositories(
+            [FromRoute] string username,
+            [FromQuery] Language? language = null,
+            [FromQuery] int take = 10)
         {
             var searchRepositoriesRequest = new SearchRepositoriesRequest()
             {
@@ -46,7 +46,7 @@ namespace TakeBlipChatbot.Controllers
             var filteredRepositories = repositories
                 .OrderBy(a => a.CreatedAt)
                 .Take(take)
-                .Select(r => new GitHubRepositoryBlipResponse
+                .Select(r => new GitHubRepositoryResponse
                 {
                     Url = r.Url,
                     Name = r.FullName,
