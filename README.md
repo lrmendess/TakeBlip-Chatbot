@@ -16,14 +16,14 @@ dotnet run
 ## 📄 Sobre a API
 ### Endpoint
 O *endpoint* que se segue tem como resposta a lista dos N repositórios mais antigos de determinado usuário do GitHub, definido pelo parâmetro `username`.
-|Verb|URI|Action|
+|Verbo|URI|Ação|
 |-----|---|------|
 |GET|`<HOST>/api/githubrepositories/{username}`|GitHubRepositoriesController@GetOlderRepositories|
 
 ### Query Params
 Este, por sua vez, permite a utilização de parâmetros para refinamento da busca, são eles:
 
-|Query param|Description|Valor Padrão|Obrigatório|
+|Query param|Descrição|Valor Padrão|Obrigatório|
 |---|---|---|---|
 |language|Nome da linguagem de programação|null|❌|
 |take|Quantidade máxima de repositórios|10|❌|
