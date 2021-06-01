@@ -2,7 +2,7 @@ using System;
 
 namespace TakeBlipChatbot.Controllers.Response
 {
-    public class GitHubRepositoryBlipResponse
+    public class GitHubRepositoryResponse
     {
         public string Url { get; set; }
         public string Name { get; set; }
