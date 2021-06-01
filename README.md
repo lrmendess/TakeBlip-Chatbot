@@ -19,7 +19,7 @@ O *endpoint* que se segue tem como resposta a lista dos N repositórios mais ant
 |Verb|URI|Action|
 |-----|---|------|
 |GET|`<HOST>/api/githubrepositories/{username}`|GitHubRepositoriesController@GetOlderRepositories|
-<br/>
+
 ### Query Params
 Este, por sua vez, permite a utilização de parâmetros para refinamento da busca, são eles:
 
@@ -27,7 +27,7 @@ Este, por sua vez, permite a utilização de parâmetros para refinamento da bus
 |---|---|---|---|
 |language|Nome da linguagem de programação|null|❌|
 |take|Quantidade máxima de repositórios|10|❌|
-<br/>
+
 ### Exemplo de uso
 Obtém os 2 repositórios Java mais antigos da takenet
 ```bash
@@ -54,6 +54,8 @@ Resposta
     }
 ]
 ```
+
+Para mais detalhes sobre a API, acesse: `<HOST>/swagger/index.html`
 
 ## 🦄 Powered by `Heroku`
 API publicada no Heroku em:
