@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lime.Messaging" Version="0.10.59-beta" />
     <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-    <PackageReference Include="Take.Blip.Client" Version="0.5.285" />
   </ItemGroup>
 
 </Project>
